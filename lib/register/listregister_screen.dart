@@ -450,50 +450,57 @@ class _regisbodyState extends State<regisbody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 60),
-          child: Container(
-            // decoration: BoxDecoration(
-            //   gradient: RadialGradient(
-            //       colors: [Colors.white, Colors.orange.shade700], radius: 1.0),
-            // ),
-            child: Stack(
-              children: <Widget>[
-                backButton(),
-                content(),
-                // regiscon1(),
-                // loginButton(),
-              ],
+    return Form(
+        key: _form,
+        child: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 60),
+              child: Container(
+                // decoration: BoxDecoration(
+                //   gradient: RadialGradient(
+                //       colors: [Colors.white, Colors.orange.shade700], radius: 1.0),
+                // ),
+
+                child: Stack(
+                  children: <Widget>[
+                    backButton(),
+                    content(),
+                    // regiscon1(),
+                    // loginButton(),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: kPrimaryColor,
-      //   child: Icon(
-      //     Icons.navigate_next,
-      //     size: 36.0,
-      //   ),
-      //   onPressed: () {
-      //     // register();
-      //   },
-      // ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          // register();
-          // register();
-          confirmcheck();
-        },
-        child: Text(
-          "สมัครสมาชิก",
-          style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        style: UserregisButtonStyle,
-      ),
-    );
+          // floatingActionButton: FloatingActionButton(
+          //   backgroundColor: kPrimaryColor,
+          //   child: Icon(
+          //     Icons.navigate_next,
+          //     size: 36.0,
+          //   ),
+          //   onPressed: () {
+          //     // register();
+          //   },
+          // ),
+          floatingActionButton: ElevatedButton(
+            onPressed: () {
+              if (_form.currentState!.validate()) {
+                // register();
+                // register();
+                confirmcheck();
+              }
+            },
+            child: Text(
+              "สมัครสมาชิก",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            style: UserregisButtonStyle,
+          ),
+        ));
   }
 }
 

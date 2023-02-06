@@ -14,6 +14,7 @@ class macrepairscreen extends StatefulWidget {
   final String username;
   final String id;
   final Map<String, dynamic> machanic;
+  final String memtel;
 
   final String proflie;
   macrepairscreen({
@@ -23,6 +24,7 @@ class macrepairscreen extends StatefulWidget {
     required this.proflie,
     required this.id,
     required this.machanic,
+    required this.memtel,
   }) : super(key: key);
   // final String username;
 
@@ -41,6 +43,7 @@ class macrepairscreenState extends State<macrepairscreen> {
         id: widget.id,
         proflie: widget.proflie,
         machanic: widget.machanic,
+        memtel: widget.memtel,
       ),
       //backgroundColor: kappbar,
       bottomNavigationBar: Container(
@@ -75,6 +78,7 @@ class macrepairscreenState extends State<macrepairscreen> {
                             username: widget.username,
                             id: widget.id,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -105,6 +109,7 @@ class macrepairscreenState extends State<macrepairscreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -135,6 +140,7 @@ class macrepairscreenState extends State<macrepairscreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,

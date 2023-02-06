@@ -15,6 +15,7 @@ class repairscreen extends StatefulWidget {
   final Map<String, dynamic> garage;
 
   final String proflie;
+  final String memtel;
   repairscreen({
     Key? key,
     required String title,
@@ -22,6 +23,7 @@ class repairscreen extends StatefulWidget {
     required this.proflie,
     required this.id,
     required this.garage,
+    required this.memtel,
   }) : super(key: key);
   // final String username;
 
@@ -36,11 +38,11 @@ class _repairscreenState extends State<repairscreen> {
     return Scaffold(
       appBar: buildAppBar(),
       body: repairBody(
-        username: widget.username,
-        id: widget.id,
-        proflie: widget.proflie,
-        garage: widget.garage,
-      ),
+          username: widget.username,
+          id: widget.id,
+          proflie: widget.proflie,
+          garage: widget.garage,
+          memtel: widget.memtel),
       //backgroundColor: kappbar,
       bottomNavigationBar: Container(
         height: 80,
@@ -73,6 +75,7 @@ class _repairscreenState extends State<repairscreen> {
                             title: 'แผนที่',
                             username: widget.username,
                             id: widget.id,
+                            memtel: widget.memtel,
                             proflie: widget.proflie,
                           );
                         },
@@ -104,6 +107,7 @@ class _repairscreenState extends State<repairscreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -134,6 +138,7 @@ class _repairscreenState extends State<repairscreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,

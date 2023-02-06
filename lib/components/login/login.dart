@@ -37,6 +37,7 @@ class _loginPageState extends State<loginPage> {
           data['level'] +
           data['fullname'] +
           data['id'] +
+          data['memtel'] +
           data['proflie']);
       Navigator.of(context).push(MaterialPageRoute(
         builder: (c) => HomeScreen(
@@ -44,6 +45,7 @@ class _loginPageState extends State<loginPage> {
           id: data['id'],
           proflie: data['proflie'],
           title: 'หน้าแรก',
+          memtel: data['memtel'],
         ),
       ));
       _ctrlUsername.clear();

@@ -14,13 +14,15 @@ class DetailPage extends StatefulWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
   DetailPage(
       {Key? key,
       required this.garage,
       required String title,
       required this.username,
       required this.proflie,
-      required this.id})
+      required this.id,
+      required this.memtel})
       : super(key: key);
 
   @override
@@ -133,21 +135,21 @@ class _DetailPageState extends State<DetailPage> {
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
-                      height: 50,
-                      width: width,
-                      child: ListView.builder(
-                        itemCount: int.parse(widget.garage['garagedeegree']),
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, int key) {
-                          return Icon(
-                            Icons.star,
-                            color: Colors.yellow[900],
-                            size: 34,
-                          );
-                        },
-                      ),
-                    ),
+                    // Container(
+                    //   height: 50,
+                    //   width: width,
+                    //   child: ListView.builder(
+                    //     itemCount: int.parse(widget.garage['garagedeegree']),
+                    //     scrollDirection: Axis.horizontal,
+                    //     itemBuilder: (context, int key) {
+                    //       return Icon(
+                    //         Icons.star,
+                    //         color: Colors.yellow[900],
+                    //         size: 34,
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 10,
                     ),
@@ -199,6 +201,7 @@ class _DetailPageState extends State<DetailPage> {
                                     title: '',
                                     username: widget.username,
                                     garage: widget.garage,
+                                    memtel: widget.memtel,
                                     // title: 'หน้าล็อกอิน',
                                   );
                                 },

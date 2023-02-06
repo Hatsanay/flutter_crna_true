@@ -13,12 +13,14 @@ class HomeScreen extends StatefulWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
   HomeScreen(
       {Key? key,
       required String title,
       required this.username,
       required this.proflie,
-      required this.id})
+      required this.id,
+      required this.memtel})
       : super(key: key);
   // final String username;
 
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         username: widget.username,
         id: widget.id,
         proflie: widget.proflie,
+        memtel: widget.memtel,
       ),
       //backgroundColor: kappbar,
       bottomNavigationBar: Container(
@@ -70,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             username: widget.username,
                             id: widget.id,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -100,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -130,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,

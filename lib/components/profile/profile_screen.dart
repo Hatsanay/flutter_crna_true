@@ -16,12 +16,14 @@ class profileScreen extends StatefulWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
 
   profileScreen(
       {Key? key,
       required String title,
       required this.username,
       required this.proflie,
+      required this.memtel,
       required this.id})
       : super(key: key);
 
@@ -35,10 +37,10 @@ class _HomeScreenState extends State<profileScreen> {
     return Scaffold(
       appBar: buildAppBar(),
       body: profilebody(
-        username: widget.username,
-        id: widget.id,
-        proflie: widget.proflie,
-      ),
+          username: widget.username,
+          id: widget.id,
+          proflie: widget.proflie,
+          memtel: widget.memtel),
       //backgroundColor: kappbar,
       bottomNavigationBar: Container(
         height: 80,
@@ -67,6 +69,7 @@ class _HomeScreenState extends State<profileScreen> {
                           return HomeScreen(
                               title: 'หน้าแรก',
                               username: widget.username,
+                              memtel: widget.memtel,
                               id: widget.id,
                               proflie: widget.proflie);
                         },
@@ -99,6 +102,7 @@ class _HomeScreenState extends State<profileScreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -130,6 +134,7 @@ class _HomeScreenState extends State<profileScreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -161,21 +166,21 @@ class _HomeScreenState extends State<profileScreen> {
     return AppBar(
       elevation: 0,
       backgroundColor: kappbar,
-      title: const Text(
+      title: Text(
         'หน้าโปรไฟล์',
         style: TextStyle(
           color: kPrimaryColor,
           fontWeight: FontWeight.normal,
         ),
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/bell.svg",
-          ),
-          onPressed: () {},
-        ),
-      ],
+      // actions: <Widget>[
+      //   IconButton(
+      //     icon: SvgPicture.asset(
+      //       "assets/icons/bell.svg",
+      //     ),
+      //     onPressed: () {},
+      //   ),
+      // ],
     );
   }
 }

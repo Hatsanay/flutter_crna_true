@@ -9,12 +9,14 @@ class machanicDetailPage extends StatefulWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
   machanicDetailPage(
       {Key? key,
       required this.machanic,
       required String title,
       required this.username,
       required this.proflie,
+      required this.memtel,
       required this.id})
       : super(key: key);
 
@@ -130,6 +132,8 @@ class _DetailPageState extends State<machanicDetailPage> {
                                     title: '',
                                     username: widget.username,
                                     machanic: widget.machanic,
+                                    memtel: widget.memtel,
+
                                     // title: 'หน้าล็อกอิน',
                                   );
                                 },

@@ -17,11 +17,13 @@ class macrepairBody extends StatefulWidget {
   final String username;
   final String id;
   final String proflie;
+  final String memtel;
   macrepairBody(
       {Key? key,
       required this.username,
       required this.id,
       required this.proflie,
+      required this.memtel,
       required this.machanic})
       : super(key: key);
 
@@ -31,8 +33,10 @@ class macrepairBody extends StatefulWidget {
 
 class _macrepairBodyState extends State<macrepairBody> {
   late GoogleMapController _mapController;
-  final TextEditingController repairreqfullname = TextEditingController();
-  final TextEditingController repairreqtel = TextEditingController();
+  final GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  TextEditingController repairreqfullname = TextEditingController();
+  TextEditingController repairreqtel = TextEditingController();
   final TextEditingController repairreqcardetial = TextEditingController();
   final TextEditingController repairreqspecial = TextEditingController();
   final TextEditingController repairreqproblem = TextEditingController();
@@ -45,9 +49,12 @@ class _macrepairBodyState extends State<macrepairBody> {
 
   @override
   void initState() {
+    repairreqfullname = TextEditingController(text: widget.username);
+    repairreqtel = TextEditingController(text: widget.memtel);
+    findlatlng1();
+
     super.initState();
     // garage = widget.garage;
-    findlatlng1();
   }
 
   Future<Null> findlatlng1() async {
@@ -109,7 +116,7 @@ class _macrepairBodyState extends State<macrepairBody> {
       // "repairreqlattitude": latti1.toString(),
       // "repairreqlonggitude": lngji1.toString(),
 
-      "repairreqmacid": widget.machanic['garageid'].toString(),
+      "repairreqmacid": widget.machanic['mechanicid'].toString(),
       "repairname": widget.machanic['mechanicfullname'].toString(),
       "repairreqmemid": widget.id.toString(),
 
@@ -140,6 +147,7 @@ class _macrepairBodyState extends State<macrepairBody> {
             proflie: widget.proflie,
             title: '',
             username: widget.username,
+            memtel: widget.memtel,
           ),
         ),
       );
@@ -234,164 +242,169 @@ class _macrepairBodyState extends State<macrepairBody> {
                   ),
                 ],
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'โปรดกรอกรหัสผ่าน(ชื่อ-นามสกุล)!';
-                        }
-                        return null;
-                      },
-                      controller: repairreqfullname,
-                      scrollPadding: EdgeInsets.all(10),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "ชื่อ-นามสกุล",
+              Form(
+                key: _form,
+                child: Container(
+                  child: Column(
+                    children: [
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
                       ),
-                      keyboardType: TextInputType.name,
-                      // keyboardType: TextInputType.numberWithOptions(
-                      //   decimal: false,
-                      //   signed: true,
+                      TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'โปรดกรอกรหัสผ่าน(ชื่อ-นามสกุล)!';
+                          }
+                          return null;
+                        },
+                        controller: repairreqfullname,
+                        scrollPadding: EdgeInsets.all(10),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "ชื่อ-นามสกุล",
+                        ),
+                        keyboardType: TextInputType.name,
+                        // keyboardType: TextInputType.numberWithOptions(
+                        //   decimal: false,
+                        //   signed: true,
+                        // ),
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'โปรดกรอกรหัสผ่าน(เบอร์โทร)!';
+                          }
+                          return null;
+                        },
+                        controller: repairreqtel,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "เบอร์โทร",
+                        ),
+                        // keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.numberWithOptions(
+                          decimal: false,
+                          signed: true,
+                        ),
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'โปรดกรอกรหัสผ่าน(รายละเอียดรถ ยี่ห้อ, รุ่น, สี)!';
+                          }
+                          return null;
+                        },
+                        controller: repairreqcardetial,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "รายละเอียดรถ ยี่ห้อ, รุ่น, สี",
+                        ),
+                        keyboardType: TextInputType.name,
+                        // keyboardType: TextInputType.numberWithOptions(
+                        //   decimal: false,
+                        //   signed: true,
+                        // ),
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'โปรดกรอกรหัสผ่าน(ปัญหาเบื้องต้น)!';
+                          }
+                          return null;
+                        },
+                        controller: repairreqproblem,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "ปัญหาเบื้องต้น",
+                        ),
+                        keyboardType: TextInputType.name,
+                        // keyboardType: TextInputType.numberWithOptions(
+                        //   decimal: false,
+                        //   signed: true,
+                        // ),
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      TextFormField(
+                        controller: repairreqspecial,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "สถานที่ไกล้เคียง",
+                        ),
+                        keyboardType: TextInputType.name,
+                        // keyboardType: TextInputType.numberWithOptions(
+                        //   decimal: false,
+                        //   signed: true,
+                        // ),
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      Text(
+                        " ",
+                        style:
+                            TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
+                      ),
+                      // Container(
+                      //   child: Card(
+                      //     elevation: 5,
+                      //     margin: EdgeInsets.all(8),
+                      //     child: Container(
+                      //       width: double.infinity,
+                      //       height: double.infinity,
+                      //       child: GoogleMap(
+                      //         onMapCreated: (GoogleMapController controller) {
+                      //           _mapController = controller;
+                      //         },
+                      //         initialCameraPosition: CameraPosition(
+                      //           target: LatLng(37.4219999, -122.0840575),
+                      //           zoom: 12.0,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
                       // ),
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'โปรดกรอกรหัสผ่าน(เบอร์โทร)!';
-                        }
-                        return null;
-                      },
-                      controller: repairreqtel,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "เบอร์โทร",
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_form.currentState!.validate()) {
+                            postrepairmac();
+                          }
+                        },
+                        child: Text(
+                          "แจ้งซ่อม",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        style: UserregisButtonStyle,
                       ),
-                      // keyboardType: TextInputType.name,
-                      keyboardType: TextInputType.numberWithOptions(
-                        decimal: false,
-                        signed: true,
-                      ),
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'โปรดกรอกรหัสผ่าน(รายละเอียดรถ ยี่ห้อ, รุ่น, สี)!';
-                        }
-                        return null;
-                      },
-                      controller: repairreqcardetial,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "รายละเอียดรถ ยี่ห้อ, รุ่น, สี",
-                      ),
-                      keyboardType: TextInputType.name,
-                      // keyboardType: TextInputType.numberWithOptions(
-                      //   decimal: false,
-                      //   signed: true,
-                      // ),
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'โปรดกรอกรหัสผ่าน(ปัญหาเบื้องต้น)!';
-                        }
-                        return null;
-                      },
-                      controller: repairreqproblem,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "ปัญหาเบื้องต้น",
-                      ),
-                      keyboardType: TextInputType.name,
-                      // keyboardType: TextInputType.numberWithOptions(
-                      //   decimal: false,
-                      //   signed: true,
-                      // ),
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    TextFormField(
-                      controller: repairreqspecial,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "สถานที่ไกล้เคียง",
-                      ),
-                      keyboardType: TextInputType.name,
-                      // keyboardType: TextInputType.numberWithOptions(
-                      //   decimal: false,
-                      //   signed: true,
-                      // ),
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    Text(
-                      " ",
-                      style:
-                          TextStyle(fontSize: 9, color: kPrimaryColor), //ว่าง
-                    ),
-                    // Container(
-                    //   child: Card(
-                    //     elevation: 5,
-                    //     margin: EdgeInsets.all(8),
-                    //     child: Container(
-                    //       width: double.infinity,
-                    //       height: double.infinity,
-                    //       child: GoogleMap(
-                    //         onMapCreated: (GoogleMapController controller) {
-                    //           _mapController = controller;
-                    //         },
-                    //         initialCameraPosition: CameraPosition(
-                    //           target: LatLng(37.4219999, -122.0840575),
-                    //           zoom: 12.0,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    ElevatedButton(
-                      onPressed: () {
-                        postrepairmac();
-                      },
-                      child: Text(
-                        "แจ้งซ่อม",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      style: UserregisButtonStyle,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

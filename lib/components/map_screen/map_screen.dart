@@ -16,12 +16,14 @@ class pinScreen extends StatefulWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
 
   const pinScreen(
       {Key? key,
       required String title,
       required this.username,
       required this.proflie,
+      required this.memtel,
       required this.id})
       : super(key: key);
 
@@ -65,6 +67,7 @@ class _HomeScreenState extends State<pinScreen> {
                             username: widget.username,
                             id: widget.id,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,
@@ -99,6 +102,7 @@ class _HomeScreenState extends State<pinScreen> {
                               title: 'รายการ',
                               id: widget.id,
                               username: widget.username,
+                              memtel: widget.memtel,
                               proflie: widget.proflie);
                         },
                         transitionsBuilder: (BuildContext context,
@@ -129,6 +133,7 @@ class _HomeScreenState extends State<pinScreen> {
                             id: widget.id,
                             username: widget.username,
                             proflie: widget.proflie,
+                            memtel: widget.memtel,
                           );
                         },
                         transitionsBuilder: (BuildContext context,

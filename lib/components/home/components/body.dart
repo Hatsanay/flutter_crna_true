@@ -10,12 +10,14 @@ class homeBody extends StatefulWidget {
   final String username;
   final String id;
   final String proflie;
+  final String memtel;
 
   homeBody(
       {Key? key,
       required this.username,
       required this.id,
-      required this.proflie})
+      required this.proflie,
+      required this.memtel})
       : super(key: key);
   @override
   State<homeBody> createState() => _homeBodyState();
@@ -33,15 +35,16 @@ class _homeBodyState extends State<homeBody> {
     }
   }
 
-  TextEditingController seh = TextEditingController();
+  TextEditingController seh = new TextEditingController();
   @override
   void initState() {
-    seh = TextEditingController();
+    // seh = TextEditingController();
+    sehgarage();
     super.initState();
   }
 
   FutureBuilder<List<Map<String, dynamic>>> sehgarage() {
-    if (seh == 0 || seh.text.isEmpty) {
+    if (seh == null || seh.text.isEmpty) {
       return FutureBuilder<List<Map<String, dynamic>>>(
         future: GarageProvider.fetchData(),
         builder: (context, snapshot) {
@@ -50,12 +53,12 @@ class _homeBodyState extends State<homeBody> {
               itemCount: snapshot.data?.length,
               itemBuilder: (context, index) {
                 return MenuItemCard(
-                  garage: snapshot.data![index],
-                  id: widget.id,
-                  proflie: widget.proflie,
-                  title: '',
-                  username: widget.username,
-                );
+                    garage: snapshot.data![index],
+                    id: widget.id,
+                    proflie: widget.proflie,
+                    title: '',
+                    username: widget.username,
+                    memtel: widget.memtel);
               },
             );
           } else if (snapshot.hasError) {
@@ -66,6 +69,7 @@ class _homeBodyState extends State<homeBody> {
         },
       );
     } else {
+      print(seh.toString());
       return FutureBuilder<List<Map<String, dynamic>>>(
         future: sehgarageProvider.fetchData(seh.toString()),
         builder: (context, snapshot) {
@@ -74,12 +78,12 @@ class _homeBodyState extends State<homeBody> {
               itemCount: snapshot.data?.length,
               itemBuilder: (context, index) {
                 return MenuItemCard(
-                  garage: snapshot.data![index],
-                  id: widget.id,
-                  proflie: widget.proflie,
-                  title: '',
-                  username: widget.username,
-                );
+                    garage: snapshot.data![index],
+                    id: widget.id,
+                    proflie: widget.proflie,
+                    title: '',
+                    username: widget.username,
+                    memtel: widget.memtel);
               },
             );
           } else if (snapshot.hasError) {
@@ -204,14 +208,15 @@ class _homeBodyState extends State<homeBody> {
                                     borderRadius: BorderRadius.circular(30),
                                     borderSide: BorderSide(
                                         width: 1.0, color: Colors.grey))),
-                            onChanged: (value) {
+                            onChanged: (String value) {
                               if (value.isNotEmpty) {
                                 setState(() {
-                                  seh = value as TextEditingController;
+                                  seh = TextEditingController();
+                                  seh.text = value;
                                 });
                               } else {
                                 setState(() {
-                                  var seh = 0;
+                                  var seh = null;
                                 });
                               }
                             },
@@ -247,12 +252,12 @@ class _homeBodyState extends State<homeBody> {
             itemCount: snapshot.data?.length,
             itemBuilder: (context, index) {
               return machanicItemCard(
-                machanic: snapshot.data![index],
-                id: widget.id,
-                proflie: widget.proflie,
-                title: '',
-                username: widget.username,
-              );
+                  machanic: snapshot.data![index],
+                  id: widget.id,
+                  proflie: widget.proflie,
+                  title: '',
+                  username: widget.username,
+                  memtel: widget.memtel);
             },
           );
         } else if (snapshot.hasError) {

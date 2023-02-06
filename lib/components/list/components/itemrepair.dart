@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class itemrepair extends StatelessWidget {
+class itemrepair extends StatefulWidget {
   final Map<String, dynamic> garage;
   final String username;
 
@@ -22,6 +22,45 @@ class itemrepair extends StatelessWidget {
       required this.username,
       required this.proflie,
       required this.id});
+
+  @override
+  State<itemrepair> createState() => _itemrepairState();
+}
+
+class _itemrepairState extends State<itemrepair> {
+  showstatus2() {
+    if (int.parse(widget.garage['repairreqstatus']) == 1) {
+      return Text(
+        "รอยืนยัน",
+        style: TextStyle(color: Colors.red),
+      );
+    } else if (int.parse(widget.garage['repairreqstatus']) == 2) {
+      return Text(
+        "กำลังเตรียมพร้อม",
+        style: TextStyle(color: Color.fromARGB(255, 179, 101, 0)),
+      );
+    } else if (int.parse(widget.garage['repairreqstatus']) == 3) {
+      return Text(
+        "กำลังเดินทาง",
+        style: TextStyle(color: Colors.orangeAccent),
+      );
+    } else if (int.parse(widget.garage['repairreqstatus']) == 4) {
+      return Text(
+        "กำลังดำเนินการซ่อม",
+        style: TextStyle(color: Color.fromARGB(255, 245, 193, 125)),
+      );
+    } else if (int.parse(widget.garage['repairreqstatus']) == 5) {
+      return Text(
+        "เสร็จสิ้น",
+        style: TextStyle(color: Colors.green),
+      );
+    } else if (int.parse(widget.garage['repairreqstatus']) == 9) {
+      return Text(
+        "ปฎิเสธ",
+        style: TextStyle(color: Colors.red),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +110,14 @@ class itemrepair extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            garage['repairname'],
+                            widget.garage['repairname'],
                             style: TextStyle(
                                 color: kPrimaryColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "ชื่อผู้แจ้ง" + garage['repairreqfullname'],
+                            "ชื่อผู้แจ้ง" + widget.garage['repairreqfullname'],
                             style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey[500],
@@ -88,7 +127,7 @@ class itemrepair extends StatelessWidget {
                             height: 2,
                           ),
                           Text(
-                            "ปัญหา" + garage['repairreqproblem'],
+                            "ปัญหา" + widget.garage['repairreqproblem'],
                             style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey[500],
@@ -98,7 +137,7 @@ class itemrepair extends StatelessWidget {
                             height: 2,
                           ),
                           Text(
-                            garage['repairreqdatetime'],
+                            widget.garage['repairreqdatetime'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
@@ -107,13 +146,7 @@ class itemrepair extends StatelessWidget {
                           SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            garage['repairreqstatus'],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.green),
-                          ),
+                          showstatus2(),
                         ],
                       ),
                     ),

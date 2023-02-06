@@ -13,13 +13,16 @@ class machanicItemCard extends StatelessWidget {
   final String id;
 
   final String proflie;
+  final String memtel;
 
-  machanicItemCard(
-      {required this.machanic,
-      required String title,
-      required this.username,
-      required this.proflie,
-      required this.id});
+  machanicItemCard({
+    required this.machanic,
+    required String title,
+    required this.username,
+    required this.proflie,
+    required this.id,
+    required this.memtel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,7 @@ class machanicItemCard extends StatelessWidget {
                                 proflie: proflie,
                                 title: '',
                                 username: username,
+                                memtel: memtel,
                               )));
                 },
                 child: Row(
@@ -103,6 +107,7 @@ class machanicItemCard extends StatelessWidget {
                         proflie: proflie,
                         username: username,
                         title: '',
+                        memtel: memtel,
                       ),
                     ),
                   );
