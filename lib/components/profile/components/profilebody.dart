@@ -1,9 +1,14 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:crna_flutter/components/login/login.dart';
+import 'package:crna_flutter/components/profile/profile_screen%20copy.dart';
+import 'package:crna_flutter/components/profile/telprofile_screen.dart';
 import 'package:crna_flutter/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class profilebody extends StatefulWidget {
@@ -69,6 +74,20 @@ class _profilebodyState extends State<profilebody> {
               height: 10,
             ),
             ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => nameprofileScreen(
+                      id: widget.id,
+                      proflie: widget.proflie,
+                      title: '',
+                      username: widget.username,
+                      memtel: widget.memtel,
+                    ),
+                  ),
+                );
+              },
               leading: Container(
                 width: 30,
                 height: 30,
@@ -76,12 +95,102 @@ class _profilebodyState extends State<profilebody> {
                   borderRadius: BorderRadius.circular(100),
                   color: kPrimaryColor.withOpacity(0.1),
                 ),
+                child: Icon(
+                  Icons.person,
+                  color: kPrimaryColor,
+                ),
                 // child: Icon(
                 //   LineAwesomeIcons.cog,
                 //   color: kPrimaryColor,
                 // ),
               ),
-            )
+              title: Text(
+                // "ชื่อ-นามสกุล",
+                widget.username,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: kPrimaryColor.withOpacity(0.1),
+                ),
+                child: Icon(
+                  Icons.arrow_circle_right_outlined,
+                  color: kPrimaryColor,
+                ),
+                // child: Icon(
+                //   LineAwesomeIcons.cog,
+                //   color: kPrimaryColor,
+                // ),
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => telprofileScreen(
+                      id: widget.id,
+                      proflie: widget.proflie,
+                      title: '',
+                      username: widget.username,
+                      memtel: widget.memtel,
+                    ),
+                  ),
+                );
+              },
+              leading: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: kPrimaryColor.withOpacity(0.1),
+                ),
+                child: Icon(
+                  Icons.phone,
+                  color: kPrimaryColor,
+                ),
+                // child: Icon(
+                //   LineAwesomeIcons.cog,
+                //   color: kPrimaryColor,
+                // ),
+              ),
+              title: Text(
+                // "ชื่อ-นามสกุล",
+                widget.memtel,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: kPrimaryColor.withOpacity(0.1),
+                ),
+                child: Icon(
+                  Icons.arrow_circle_right_outlined,
+                  color: kPrimaryColor,
+                ),
+                // child: Icon(
+                //   LineAwesomeIcons.cog,
+                //   color: kPrimaryColor,
+                // ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              width: 200,
+              child: ElevatedButton(
+                onPressed: () {
+                  logout(context);
+                },
+                child: Text("Log out"),
+              ),
+            ),
           ],
         ),
       ),
@@ -131,4 +240,14 @@ class _profilebodyState extends State<profilebody> {
       // ),
     );
   }
+}
+
+Future<void> logout(BuildContext context) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.clear();
+
+  // Navigate to the login screen
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (c) => loginPage(),
+  ));
 }

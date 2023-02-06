@@ -1,7 +1,9 @@
 import 'package:crna_flutter/components/home/home_screen.dart';
 import 'package:crna_flutter/components/list/list_screen.dart';
 import 'package:crna_flutter/components/map_screen/map_screen.dart';
+import 'package:crna_flutter/components/profile/components/nameprofilebody.dart';
 import 'package:crna_flutter/components/profile/components/profilebody.dart';
+import 'package:crna_flutter/components/profile/components/telprofilebody.dart';
 import 'package:crna_flutter/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +12,7 @@ import '../home/components/body.dart';
 
 //import 'package:flutter_svg/flutter_svg.dart';
 
-class profileScreen extends StatefulWidget {
+class telprofileScreen extends StatefulWidget {
   final String username;
 
   final String id;
@@ -18,7 +20,7 @@ class profileScreen extends StatefulWidget {
   final String proflie;
   final String memtel;
 
-  profileScreen(
+  telprofileScreen(
       {Key? key,
       required String title,
       required this.username,
@@ -28,15 +30,15 @@ class profileScreen extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<profileScreen> createState() => _profileHomeScreenState();
+  State<telprofileScreen> createState() => _telprofileHomeScreenState();
 }
 
-class _profileHomeScreenState extends State<profileScreen> {
+class _telprofileHomeScreenState extends State<telprofileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: profilebody(
+      body: telprofilebody(
           username: widget.username,
           id: widget.id,
           proflie: widget.proflie,

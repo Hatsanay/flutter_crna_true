@@ -35,7 +35,7 @@ class _homeBodyState extends State<homeBody> {
     }
   }
 
-  TextEditingController seh = new TextEditingController();
+  TextEditingController seh = TextEditingController();
   @override
   void initState() {
     // seh = TextEditingController();
@@ -71,7 +71,7 @@ class _homeBodyState extends State<homeBody> {
     } else {
       print(seh.toString());
       return FutureBuilder<List<Map<String, dynamic>>>(
-        future: sehgarageProvider.fetchData(seh.toString()),
+        future: sehgarageProvider.fetchData(seh.text.toString()),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
