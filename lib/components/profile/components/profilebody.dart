@@ -179,18 +179,18 @@ class _profilebodyState extends State<profilebody> {
                 // ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              width: 200,
-              child: ElevatedButton(
-                onPressed: () {
-                  logout(context);
-                },
-                child: Text("Log out"),
-              ),
-            ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // SizedBox(
+            //   width: 200,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       // logout(context);
+            //     },
+            //     child: Text("Log out"),
+            //   ),
+            // ),
           ],
         ),
       ),

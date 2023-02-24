@@ -52,7 +52,7 @@ class _MapSampleState extends State<MapSample> {
   }
 
   _getMarkersFromDB() async {
-    var url = 'http://192.168.1.106/flutter_login/getmapgarage.php';
+    var url = 'http://192.168.1.100/flutter_login/getmapgarage.php';
     var response = await http.get(Uri.parse(url));
     var markers = jsonDecode(response.body);
     for (var marker in markers) {
@@ -165,7 +165,7 @@ class _MapSampleState extends State<MapSample> {
 //   }
 
 //   fetchMarkers() async {
-//     var url = 'http://192.168.1.106/flutter_login/getmapgarage.php';
+//     var url = 'http://192.168.1.100/flutter_login/getmapgarage.php';
 //     var connectivityResult = await (Connectivity().checkConnectivity());
 //     if (connectivityResult == ConnectivityResult.mobile ||
 //         connectivityResult == ConnectivityResult.wifi) {

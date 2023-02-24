@@ -135,21 +135,21 @@ class _DetailPageState extends State<DetailPage> {
                     SizedBox(
                       height: 5,
                     ),
-                    // Container(
-                    //   height: 50,
-                    //   width: width,
-                    //   child: ListView.builder(
-                    //     itemCount: int.parse(widget.garage['garagedeegree']),
-                    //     scrollDirection: Axis.horizontal,
-                    //     itemBuilder: (context, int key) {
-                    //       return Icon(
-                    //         Icons.star,
-                    //         color: Colors.yellow[900],
-                    //         size: 34,
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
+                    Container(
+                      height: 50,
+                      width: width,
+                      child: ListView.builder(
+                        itemCount: int.parse(widget.garage['garagedeegree']),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, int key) {
+                          return Icon(
+                            Icons.star,
+                            color: Colors.yellow[900],
+                            size: 34,
+                          );
+                        },
+                      ),
+                    ),
                     SizedBox(
                       height: 10,
                     ),

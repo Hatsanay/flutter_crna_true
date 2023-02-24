@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:crna_flutter/components/garagerepair/conponents/body.dart';
 import 'package:crna_flutter/components/garagerepair/repair_screen.dart';
 import 'package:crna_flutter/components/home/components/detaiPage.dart';
+import 'package:crna_flutter/components/list/listdtl_screen.dart';
 import 'package:crna_flutter/constans.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,16 +74,17 @@ class _itemrepairState extends State<itemrepair> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => DetailPage(
-                  //               garage: garage,
-                  //               id: id,
-                  //               proflie: proflie,
-                  //               title: '',
-                  //               username: username,
-                  //             )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => listdtlScreen(
+                                garage: widget.garage,
+                                id: widget.id,
+                                memtel: '',
+                                proflie: widget.proflie,
+                                title: '',
+                                username: widget.username,
+                              )));
                 },
                 child: Row(
                   children: <Widget>[
@@ -163,7 +165,7 @@ class _itemrepairState extends State<itemrepair> {
 
 // class repairProvider {
 //   static Future<List<Map<String, dynamic>>> fetchData() async {
-//     var url = 'http://192.168.1.106/flutter_login/getlistgarage.php';
+//     var url = 'http://192.168.1.100/flutter_login/getlistgarage.php';
 //     var response = await http.get(Uri.parse(url));
 //     if (response.statusCode == 200) {
 //       final List<dynamic> data = jsonDecode(response.body);

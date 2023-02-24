@@ -109,7 +109,7 @@ class _nameprofilebodyState extends State<nameprofilebody> {
                         print(_editname);
                         if (_form.currentState!.validate()) {
                           var url = Uri.http(
-                              "192.168.1.106",
+                              "192.168.1.100",
                               '/flutter_login/update_edit_profile.php',
                               {'q': '{http}'});
                           var response = await http.post(url, body: {

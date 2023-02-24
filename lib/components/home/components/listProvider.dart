@@ -3,7 +3,7 @@ import 'dart:convert';
 
 class GarageProvider {
   static Future<List<Map<String, dynamic>>> fetchData() async {
-    var url = 'http://192.168.1.106/flutter_login/getlistgarage.php';
+    var url = 'http://192.168.1.100/flutter_login/getlistgarage.php';
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
@@ -16,7 +16,7 @@ class GarageProvider {
 
 class machanicProvider {
   static Future<List<Map<String, dynamic>>> fetchData() async {
-    var url = 'http://192.168.1.106/flutter_login/getmachanic.php';
+    var url = 'http://192.168.1.100/flutter_login/getmachanic.php';
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
@@ -29,7 +29,7 @@ class machanicProvider {
 
 // class repairProvider {
 //   static Future<List<Map<String, dynamic>>> fetchData() async {
-//     var url = 'http://192.168.1.106/flutter_login/getrepair.php';
+//     var url = 'http://192.168.1.100/flutter_login/getrepair.php';
 //     var response = await http.get(Uri.parse(url));
 //     if (response.statusCode == 200) {
 //       final List<dynamic> data = jsonDecode(response.body);
@@ -42,10 +42,10 @@ class machanicProvider {
 
 class repairProvider {
   static Future<List<Map<String, dynamic>>> fetchData(String id) async {
-    // var url = 'http://192.168.1.106/flutter_login/getrepair.php';
+    // var url = 'http://192.168.1.100/flutter_login/getrepair.php';
     // var response = await http.get(Uri.parse(url));
     var url = Uri.http(
-        "192.168.1.106", '/flutter_login/getrepair.php', {'q': '{http}'});
+        "192.168.1.100", '/flutter_login/getrepair.php', {'q': '{http}'});
     var response = await http.post(url, body: {
       "memid": id.toString(),
 
@@ -65,10 +65,10 @@ class repairProvider {
 
 class sehgarageProvider {
   static Future<List<Map<String, dynamic>>> fetchData(String garagename) async {
-    // var url = 'http://192.168.1.106/flutter_login/getrepair.php';
+    // var url = 'http://192.168.1.100/flutter_login/getrepair.php';
     // var response = await http.get(Uri.parse(url));
     var url = Uri.http(
-        "192.168.1.106", '/flutter_login/getsehgarage.php', {'q': '{http}'});
+        "192.168.1.100", '/flutter_login/getsehgarage.php', {'q': '{http}'});
     var response = await http.post(url, body: {
       "garagename": garagename.toString(),
 

@@ -28,7 +28,7 @@ class _regisbodyState extends State<regisbody> {
 
   Future register() async {
     var url = Uri.http(
-        "192.168.1.106", '/flutter_login/register.php', {'q': '{http}'});
+        "192.168.1.100", '/flutter_login/register.php', {'q': '{http}'});
     var response = await http.post(url, body: {
       "username": user.text.toString(),
       "password": pass.text.toString(),
@@ -192,13 +192,16 @@ class _regisbodyState extends State<regisbody> {
         },
         controller: user,
         keyboardType: TextInputType.emailAddress,
+        // ignore: prefer_const_constructors
         decoration: InputDecoration(
+            // ignore: prefer_const_constructors
             icon: Icon(
               Icons.person,
               size: 36.0,
               color: kPrimaryColor,
             ),
             labelText: 'Username',
+            // ignore: prefer_const_constructors
             labelStyle: TextStyle(color: kPrimaryColor)),
       ),
     );

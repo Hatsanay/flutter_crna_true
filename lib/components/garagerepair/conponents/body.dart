@@ -112,7 +112,7 @@ class _repairBodyState extends State<repairBody> {
 
   Future postrepair() async {
     var url = Uri.http(
-        "192.168.1.106", '/flutter_login/postrepair.php', {'q': '{http}'});
+        "192.168.1.100", '/flutter_login/postrepair.php', {'q': '{http}'});
     var response = await http.post(url, body: {
       "repairreqfullname": repairreqfullname.text.toString(),
       "repairreqtel": repairreqtel.text.toString(),
